@@ -4,3 +4,5 @@ with open('archivo.txt', 'r') as archivo:
     for linea in archivo:
         # Imprime cada línea
         print(linea)
+
+print("xd")
