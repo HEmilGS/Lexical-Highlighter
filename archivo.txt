@@ -1,3 +1,6 @@
 x = 7
 a = "x+e" + "-b"
 print(a)
+a != " = = = " 787+3
+if(a == x)
+  print("Hola y adios")
