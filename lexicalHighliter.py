@@ -1,7 +1,12 @@
-# Abre el archivo en modo lectura
-with open('archivo.txt', 'r') as archivo:
-    # Itera sobre cada línea del archivo
-    for linea in archivo:
-        # Imprime cada línea
-        print(linea)
+import re
+
+def isComment(linea):
+    coincidencias = re.findall(r'//.*$', linea)
+    return coincidencias
+
+linea = "ejemplo //línea con comentarios"
+coincidencias = isComment(linea)
+for coincidencia in coincidencias:
+    print(coincidencia)
+
 
