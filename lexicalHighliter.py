@@ -15,8 +15,9 @@ def isPunctuation(linea):
 
 linea = "ejemplo #línea con comentarios"
 coincidencias = isComment(linea)
-for coincidencia in coincidencias:
-    print(coincidencia)
+print (coincidencias)
+# for coincidencia in coincidencias:
+#     print(coincidencia)
 
 linea = 'Esto es un ejemplo con caracteres especiales: ", [], {}.'
 coincidencias = isPunctuation(linea)
