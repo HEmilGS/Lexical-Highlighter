@@ -18,6 +18,8 @@ coincidencias = isComment(linea)
 for coincidencia in coincidencias:
     print(coincidencia)
 
+
+
 linea = 'Esto es un ejemplo con caracteres especiales: ", [], {}.'
 coincidencias = isPunctuation(linea)
 print(coincidencias)
