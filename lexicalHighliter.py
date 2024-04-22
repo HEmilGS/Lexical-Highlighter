@@ -8,13 +8,16 @@ with open('archivo.txt', 'r') as archivo:
         # Imprime cada línea
         lineas.append(linea)
 
+a = True
+b = False
+
 def highlight_operators(line):
     operatorPattern = r'[=+\-\*\/!<>]' #Patron de los operadores
-    literalsPattern = r'(("[^"]*")|(\'[^\']*\'))|([0-9]*\.*[0-9]+)' #Patron de los literales
+    literalsPattern = r'(("[^"]*")|(\'[^\']*\'))|([0-9]*\.*[0-9]+)|(False)|(True)' #Patron de los literales
     
     line = re.sub(literalsPattern,r'__LITERAL1__\g<0>__LITERAL2__',line)# Reemplaza los literales con el texto __LITERAL__ al inicio y al final incluyendo el mismo literal
-    parts = re.split(r'("[^"]*"|\'[^\']*\')', line)# Separa la línea en partes, si encuentra unas comillas dobles o simples
-    for i in range(0, len(parts), 2):
+    parts = re.split(r'("[^"]*"|\'[^\']*\')', line)# Separa la línea en partes, si encuentra unas comillas dobles o simples para encontrar los operadores que no estén dentro de las comillas
+    for i in range(0, len(parts), 2):# Itera sobre las partes de la línea
         parts[i] = re.sub(operatorPattern, r'__OPERATOR1__\g<0>__OPERATOR2__', parts[i])# Reemplaza los operadores con el texto __OPERATOR__ al inicio y al final incluyendo el mismo operador
     line = ''.join(parts)# Une las partes de la línea con las modificaciones y las partes de las comillas
     line = line.replace('__OPERATOR1__', '<span class="operator">').replace('__OPERATOR2__', '</span>')#Reemplaza el texto __OPERATOR__ por las etiquetas span de html
