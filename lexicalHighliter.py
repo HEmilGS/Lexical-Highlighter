@@ -8,10 +8,7 @@ with open('archivo.txt', 'r') as archivo:
         # Imprime cada línea
         lineas.append(linea)
 
-a = True
-b = False
-
-def highlight_operators(line):
+def highlight_items(line):
     operatorPattern = r'[=+\-\*\/!<>]' #Patron de los operadores
     literalsPattern = r'(("[^"]*")|(\'[^\']*\'))|([0-9]*\.*[0-9]+)|(False)|(True)' #Patron de los literales
     
@@ -24,9 +21,9 @@ def highlight_operators(line):
     line = line.replace('__LITERAL1__', '<span class="literals">').replace('__LITERAL2__', '</span>')#Reemplaza el texto __LITERAL__ por las etiquetas span de html
     return line
 
-highlighted_lines = [highlight_operators(line) for line in lineas] #Aplica la función highlight_operators a cada línea del texto
+highlighted_lines = [highlight_items(line) for line in lineas] #Aplica la función highlight_items a cada línea del texto
 
 with open('highlighted.html', 'w') as f:
-    f.write('<html><head><style>.operator { color: red; } .literals {color: blue;}</style></head><body><pre><code>\n')
+    f.write('<html>\n  <head>\n      <style>.operator { color: red; } .literals {color: blue;}</style>\n  </head>\n\n  <body>\n      <pre>\n        <code>\n')
     f.write('\n'.join(highlighted_lines))
-    f.write('\n</code></pre></body></html>')
+    f.write('\n        </code>\n      </pre>\n  </body>\n</html>')
