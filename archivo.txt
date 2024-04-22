@@ -1,6 +1,6 @@
 x = 7
-a = "x+e" + "-b"
-print(a)
-a != "asdf===f4w46" 787+3
-if(a == x)
-  print("Hola y adios")
+a = "'''''+e" + "-b"
+a = 5.1234
+a != "" 99+34
+if(a =! x)
+  print(xd)
