@@ -1,26 +1,28 @@
 <html>
   <head>
-      <style>.operator { color: red; } .literals {color: blue;}</style>
+      <style>.operator { color: red; } .literals {color: orange;} .keyword { color: blue;} .identifier{color: green;}</style>
   </head>
 
   <body>
       <pre>
         <code>
-x <span class="operator">=</span> <span class="literals">7</span>
+<span class="identifier">__x___</span> = <span class="identifier">b</span>*7
 
-a <span class="operator">=</span> <span class="literals">"'''''+e"</span> <span class="literals">""</span> <span class="literals">"+ "</span><span class="operator">-</span>b"
+<span class="identifier">a</span> = "" ++ "-b"
 
-a <span class="operator">=</span> <span class="literals">5.1234</span>
+<span class="identifier">a</span> == 5.1234
 
-a <span class="operator">!</span><span class="operator">=</span> <span class="literals">""</span> <span class="literals">99</span><span class="operator">+</span><span class="literals">34</span>
+<span class="identifier">a</span> != "" 99+34
 
-if(a <span class="operator">=</span><span class="operator">!</span> x)
+if(<span class="identifier">a</span> =! x)
 
-  print(<span class="literals">"df"</span>)
+  print("df")
 
-z <span class="operator">=</span> <span class="literals">True</span>
+<span class="identifier">zasdf</span> = True
 
-e <span class="operator">=</span> s
+<span class="identifier">ASDFe</span> = a
+
+<span class="identifier">a</span> > b
         </code>
       </pre>
   </body>

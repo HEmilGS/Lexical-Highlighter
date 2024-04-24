@@ -1,8 +1,9 @@
-x = 7
-a = "'''''+e" "" "+ "-b"
-a = 5.1234
+__x___ = b*7
+a = "" ++ "-b"
+a == 5.1234
 a != "" 99+34
 if(a =! x)
   print("df")
-z = True
-e = s
+zasdf = True
+ASDFe = a
+a > b
