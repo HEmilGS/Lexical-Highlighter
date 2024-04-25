@@ -1,0 +1,18 @@
+
+def(){
+
+
+   [fdfas]
+#djfwvd8u()
+   int x,y = 4.123
+}
+x = 7
+      a = "'''''+e" "" "+ "-b"
+a = 5.1234
+      a != "" 99+34
+if(a =! x)
+  print("df")
+z = True
+
+#ahjsk214
+e = s
