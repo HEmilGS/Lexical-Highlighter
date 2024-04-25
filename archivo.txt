@@ -1,6 +1,6 @@
-_xd123_ = a+89 < "ad" #operacion basica de a+89#--
+_xd123_ = a + 89 < "ad" #operacion basica de a+89#--
 #"asdf"asdfasdf1234fe2
-if(a != x)
-  def _xd
+def _xd:
+  if(a != x)
     print(89)
     print("hola y adios")
