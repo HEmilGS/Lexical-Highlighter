@@ -1,9 +1,6 @@
-__x___ = b*7
-a = "" ++ "-b"
-a == 5.1234
-a != "" 99+34
-if(a =! x)
-  print("df")
-zasdf = True
-ASDFe = a
-a > b
+_xd123_ = a+89 < "ad" #operacion basica de a+89#--
+#"asdf"asdfasdf1234fe2
+if(a != x)
+  def _xd
+    print(89)
+    print("hola y adios")
