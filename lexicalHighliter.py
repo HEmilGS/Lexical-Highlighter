@@ -3,7 +3,7 @@ import keyword # Importa el módulo de palabras reservadas de Python
 
 lineas = [] #Lista para almacenar las líneas del texto
 # Abre el archivo en modo lectura
-with open('archivo.txt', 'r') as archivo:
+with open('input.txt', 'r') as archivo:
     # Itera sobre cada línea del archivo
     for linea in archivo:
         # Imprime cada línea
@@ -16,19 +16,18 @@ def highlight_items(line):
     literalsPattern = r'(?<![#a-zA-Z_.])(("[^"]*")|(\'[^\']*\')|([0-9]*\.*[0-9]+)|(False)|(True))(?![#a-zA-Z_0-9])' #Patron de los literales
     keywordsPattern = r'\b(?:' + '|'.join(re.escape(kw) for kw in keyword.kwlist) + r')\b'
 
-    identifiersPattern = r'(?=^#*)(([a-zA-Z_]+)[0-9]*([a-zA-Z_]+))'
-    #identifiersPattern = r'(?<![#"\'])([a-zA-Z_]+[a-zA-Z_0-9]*)'
 
-
-    id2 = r'\b([a-zA-Z_]\w*)\b(?=\s*(<|=|!=)\s*([a-zA-Z_]\w*))'
+    identifiersPatternLeft = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
+    identifiersPatternRight = r'(\+|\-|\*|\/|\|\/|\=)\s*([a-zA-Z_]\w*)\b'
     
-
+    line = re.sub(identifiersPatternLeft, r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line)# Reemplaza los identificadores con las etiquetas span de html
+    line = re.sub(identifiersPatternRight,r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line )
+    
     line = re.sub(commentsPattern,r'$COMMENTS1__\g<0>$COMMENTS2__',line)# Reemplaza los literales con el texto __LITERAL__ al inicio y al final incluyendo el mismo literal
-
+    
+    line = re.sub(keywordsPattern, r'#KEYWORDa__\g<0>#KEYWORDb__', line)# Reemplaza las palabras reservadas con las etiquetas span de html
+    
     line = re.sub(literalsPattern,r'#LITERALa__\g<0>#LITERALb__',line)# Reemplaza los literales con el texto #LITERAL# al inicio y al final incluyendo el mismo literal
-    
-    line = re.sub(identifiersPattern, r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line)# Reemplaza los identificadores con las etiquetas span de html
-    
 
     parts = re.split(r'("[^"]*"|\'[^\']*\'|^#.*\s)', line)# Separa la línea en partes, si encuentra unas comillas dobles o simples para encontrar los operadores que no estén dentro de las comillas
     for i in range(len(parts)):
@@ -36,7 +35,6 @@ def highlight_items(line):
         if not parts[i].startswith(('"', "'", '#')):
             parts[i] = re.sub(operatorPattern, r'#OPERATORa__\g<0>#OPERATORb__', parts[i])
     line = ''.join(parts)
-    line = re.sub(keywordsPattern, r'#KEYWORDa__\g<0>#KEYWORDb__', line)# Reemplaza las palabras reservadas con las etiquetas span de html
 
     parts = re.split(r'("[^"]*"|\'[^\']*\'|#)', line)# Separa la línea en partes, si encuentra unas comillas dobles o simples para encontrar los operadores que no estén 
     for i in range(len(parts)):
