@@ -1,0 +1,12 @@
+# Inicializar la variable para almacenar la suma
+suma = 0
+
+# Iterar sobre los números 
+for i in range(1, 11):
+    # Agregar el número actual a la suma 
+    suma += i
+
+# Imprimir el resultado
+print("La suma de los números de 1 al 10 es:", suma)
+
+variable1 + variable2 - variable3
