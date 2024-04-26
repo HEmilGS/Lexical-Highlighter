@@ -16,7 +16,10 @@ def highlight_items(line):
     literalsPattern = r'(?<![#a-zA-Z_.])(("[^"]*")|(\'[^\']*\')|([0-9]*\.*[0-9]+)|(False)|(True))(?![#a-zA-Z_0-9])' #Patron de los literales
     keywordsPattern = r'\b(?:' + '|'.join(re.escape(kw) for kw in keyword.kwlist) + r')\b'
 
-    identifiersPattern = r'(?=^#*)(([a-zA-Z_]+)[0-9]*([a-zA-Z_]+))'
+
+    identifiersPatternLeft = r'(?=^#*)(([a-zA-Z_]+)[0-9]*([a-zA-Z_]+))'
+    #identifiersPatternRight = r'(?<=\+|\-|\|\/|\=)\s([a-zA-Z_]\w*)\b'
+    identifiersPatternRight = r'(?:(?<=\+|\-|\|\/|\=)\s|^)([a-zA-Z_]\w*)\b'
     #identifiersPattern = r'(?<![#"\'])([a-zA-Z_]+[a-zA-Z_0-9]*)'
 
 
@@ -27,8 +30,9 @@ def highlight_items(line):
 
     line = re.sub(literalsPattern,r'#LITERALa__\g<0>#LITERALb__',line)# Reemplaza los literales con el texto #LITERAL# al inicio y al final incluyendo el mismo literal
     
-    line = re.sub(identifiersPattern, r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line)# Reemplaza los identificadores con las etiquetas span de html
+    line = re.sub(identifiersPatternLeft, r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line)# Reemplaza los identificadores con las etiquetas span de html
     
+    line = re.sub(identifiersPatternRight,r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line )
 
     parts = re.split(r'("[^"]*"|\'[^\']*\'|^#.*\s)', line)# Separa la línea en partes, si encuentra unas comillas dobles o simples para encontrar los operadores que no estén dentro de las comillas
     for i in range(len(parts)):
