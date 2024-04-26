@@ -3,7 +3,7 @@ suma = 0
 
 # Iterar sobre los números 
 for i in range(1, 11):
-    # Agregar el número actual a la suma 
+    # Agregar el número actual a la suma90
     suma += i
 
 # Imprimir el resultado

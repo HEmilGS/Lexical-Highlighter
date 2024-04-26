@@ -10,11 +10,8 @@ def highlight_items(line):
 
 
     identifiersPatternLeft = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
-    #identifiersPatternRight = r'(?<=\+|\-|\|\/|\=)\s([a-zA-Z_]\w*)\b'
     identifiersPatternRight = r'(\+|\-|\*|\/|\|\/|\=)\s*([a-zA-Z_]\w*)\b'
 
-
-    #identifiersPattern = r'(?<![#"\'])([a-zA-Z_]+[a-zA-Z_0-9]*)'
     
 
     line = re.sub(commentsPattern,r'$COMMENTS1__\g<0>$COMMENTS2__',line)# Reemplaza los literales con el texto __LITERAL__ al inicio y al final incluyendo el mismo literal
@@ -58,7 +55,7 @@ with open('input.txt', 'r') as archivo:
     for linea in archivo:
         # Imprime cada línea
         lineas.append(linea)
-        
+
 highlighted_lines = [highlight_items(line) for line in lineas] #Aplica la función highlight_items a cada línea del texto
 
 with open('highlighted.html', 'w') as f:
