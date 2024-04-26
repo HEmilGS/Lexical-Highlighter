@@ -1,17 +1,6 @@
 import re # Importa el módulo de expresiones regulares
 import keyword # Importa el módulo de palabras reservadas de Python
 
-<<<<<<< Updated upstream
-lineas = [] #Lista para almacenar las líneas del texto
-# Abre el archivo en modo lectura
-with open('input.txt', 'r') as archivo:
-    # Itera sobre cada línea del archivo
-    for linea in archivo:
-        # Imprime cada línea
-        lineas.append(linea)
-
-=======
->>>>>>> Stashed changes
 def highlight_items(line):
     puntuactionPattern = r'[\[\](){},:.\]]' #Patron de los operadores
     commentsPattern = r'#.*$'
@@ -23,19 +12,15 @@ def highlight_items(line):
     identifiersPatternLeft = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
     #identifiersPatternRight = r'(?<=\+|\-|\|\/|\=)\s([a-zA-Z_]\w*)\b'
     identifiersPatternRight = r'(\+|\-|\*|\/|\|\/|\=)\s*([a-zA-Z_]\w*)\b'
-<<<<<<< Updated upstream
 
 
     #identifiersPattern = r'(?<![#"\'])([a-zA-Z_]+[a-zA-Z_0-9]*)'
-=======
->>>>>>> Stashed changes
     
-
 
     line = re.sub(commentsPattern,r'$COMMENTS1__\g<0>$COMMENTS2__',line)# Reemplaza los literales con el texto __LITERAL__ al inicio y al final incluyendo el mismo literal
 
     line = re.sub(literalsPattern,r'#LITERALa__\g<0>#LITERALb__',line)# Reemplaza los literales con el texto #LITERAL# al inicio y al final incluyendo el mismo literal
-
+    
     line = re.sub(identifiersPatternLeft, r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line)# Reemplaza los identificadores con las etiquetas span de html
     
     line = re.sub(identifiersPatternRight,r'#IDENTIFIERa__\g<0>#IDENTIFIERb__', line )
@@ -66,8 +51,6 @@ def highlight_items(line):
     return line
 
 
-
-
 lineas = [] #Lista para almacenar las líneas del texto
 # Abre el archivo en modo lectura
 with open('input.txt', 'r') as archivo:
@@ -75,7 +58,6 @@ with open('input.txt', 'r') as archivo:
     for linea in archivo:
         # Imprime cada línea
         lineas.append(linea)
-
         
 highlighted_lines = [highlight_items(line) for line in lineas] #Aplica la función highlight_items a cada línea del texto
 
